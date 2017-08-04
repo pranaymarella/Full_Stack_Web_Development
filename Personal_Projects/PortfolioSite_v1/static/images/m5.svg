@@ -1,0 +1,9 @@
+<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="43.3492mm" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" version="1.1" viewBox="0 0 4335 4335" width="43.3492mm" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#2B2A29}
+    .fil0 {fill:#2B2A29;fill-rule:nonzero}
+   ]]>
+  </style></defs><g id="Слой_x0020_1"><polygon class="fil0" points="786,3250 786,3062 1026,3020 1026,1324 786,1281 786,1093 1027,1093 1399,1093 2088,2844 2097,2844 2784,1093 3398,1093 3398,1281 3158,1324 3158,3020 3398,3062 3398,3250 2627,3250 2627,3062 2867,3020 2867,2396 2894,1523 2887,1522 2189,3250 1994,3250 1297,1523 1290,1525 1317,2396 1317,3020 1557,3062 1557,3250 "/><path class="fil1" d="M420 140l3344 0c198,0 359,162 359,359l0 3345c0,197 -161,359 -359,359l-3344 0c-198,0 -359,-162 -359,-359l0 -3345c0,-197 161,-359 359,-359zm152 185l3040 0c179,0 326,147 326,327l0 3039c0,180 -147,327 -326,327l-3040 0c-179,0 -326,-147 -326,-327l0 -3039c0,-180 147,-327 326,-327z"/></g></svg>
+
+
+<!-- Goes right before </g> -->

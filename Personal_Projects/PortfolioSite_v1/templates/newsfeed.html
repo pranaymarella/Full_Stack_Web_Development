@@ -1,0 +1,50 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <form method="post" action="/updatestatus">
+            <textarea class="box_status" name="status" placeholder="Click Post when finished to share"></textarea>
+            <br>
+            <input style="margin-top: 10px;" type="submit" value="Post">
+        </form>
+    </div>
+</div>
+
+<br><br>
+{% for s in status %}
+<div class="status">
+    <div class="status-heading">
+        <div class="status-title">
+            {{s.user.name}}
+        </div>
+
+        <div class="status-date">
+            {{s.created.strftime("%b %d, %Y")}}
+        </div>
+    </div>
+
+    <div class="status-content">
+        {{s.content}}
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Likes: {{s.likes}} | <a href="#">Comments ({{s.comments}}) </a></h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="#" method="post" style="display: inline;">
+                <input type="submit" style="margin-right: 15px;" value="Like">
+            </form>
+            <form action = "#" method="post" style="display: inline;">
+                <input type="submit" style="margin-right: 15px;" value="Comment">
+            </form>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

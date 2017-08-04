@@ -1,0 +1,136 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+<!--Contains the Carousel of Programming Languages -->
+<div class="row">
+    <div class="featured-title col-md-12">
+        <h2 class="featured-title-text category_effects" data-toggle="modal" data-target="#skills">Skills</h2>
+    </div>
+</div>
+<div id="carousel" class="responsive">
+    {% for skill in other_skills %}
+    <div class="text-center text-big vert_align carousel-center cfont">
+        <div class="skills">{{skill.name}}</div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Contains the Recently added projects  -->
+<div class="row">
+    <div class="featured-title col-md-12">
+        <h2 class="featured-title-text">Recently Added</h2>
+    </div>
+</div>
+<div class="organize-elements row">
+    {% for project in recent_projects %}
+        <span>
+            <div class="effects col-md-4 height" data-toggle="modal" data-target="#{{project.key.id()}}">
+                <div>
+                    <h2 class="featured-text text-uppercase text-center vert_align max">{{project.title}}</h2>
+                </div>
+                <hr class="split">
+                <p class="text-center align-middle"><b>Description:</b></p>
+                <p class="text-center align-middle max">{{project.description}}</p>
+                <p class="text-center align-middle"><b>Link:</b></p>
+                <p class="text-center align-middle max">{{project.link}}</p>
+            </div>
+        </span>
+    {% endfor %}
+</div>
+
+<!-- Contains Categories and their respective projects -->
+{% for category in other_categories %}
+    {% if category.feature == True %}
+    <div class="row">
+        <div class="featured-title col-md-12 category_effects">
+            <h2 class="featured-title-text" data-toggle="modal" data-target="#{{category.key.id()}}">{{category.name}}</h2>
+        </div>
+    </div>
+    <div class="organize-elements row">
+        {% for project in other_projects %}
+            {% if category.name == project.category_name %}
+            <span>
+                <div class="effects col-md-4 height" data-toggle="modal" data-target="#{{project.key.id()}}">
+                    <div>
+                        <h2 class="featured-text text-uppercase text-center vert_align max">{{project.title}}</h2>
+                    </div>
+                    <hr class="split">
+                    <p class="text-center align-middle"><b>Description:</b></p>
+                    <p class="text-center align-middle max">{{project.description}}</p>
+                    <p class="text-center align-middle"><b>Link:</b></p>
+                    <p class="text-center align-middle max">{{project.link}}</p>
+                </div>
+            </span>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endfor %}
+
+<!-- Contains the Modals for projects -->
+{% for project in other_projects %}
+    <aside>
+        <div class="modal fade" id="{{project.key.id()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="{{project.key.id()}}"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-title">
+                            <h2 class="max modal-about"><b>{{project.title}}</b></h2><br>
+                        </div>
+                        <div>
+                            <h4><b>Description:</b></h4>
+                            <p class="text-big">{{project.description}}</p>
+                        </div>
+                        <div>
+                            <h4><b>Link:</b></h4>
+                            {% if project.link == "[None]" %}
+                                <p class="max text-big">{{project.link}}</p>
+                            {% else %}
+                                <a href="{{project.link}}"><p class="max text-big">{{project.link}}</p></a>
+                            {% endif %}
+                            <h6 class="text-big max"><b>Upload Date:</b></h6>
+                            <p class="text-big max">{{project.created.strftime("%b %d, %Y")}}</p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+{% endfor %}
+
+<!--This is the modal for viewing all Skills-->
+<div class="modal fade" id="skills" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="skills">Skills</h4>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <th style="border-style: none none solid none;">Skills</th>
+                    </tr>
+                    {% for skill in other_skills %}
+                    <tr>
+                        <td style="padding: 5px;">{{skill.name}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer" style="height: 100px;">
+</div>
+{% endblock %}

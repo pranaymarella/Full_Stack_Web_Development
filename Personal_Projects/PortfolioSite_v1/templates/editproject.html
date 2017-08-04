@@ -1,0 +1,72 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="featured-title col-md-12">
+        <h2 class="featured-title-text">Edit Project</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="error"><b>{{error}}</b></div>
+        <form method="post">
+            <label>
+                <div class="text-big">Title *</div>
+                <input class="title_link" type="text" name="title" value="{{project.title}}">
+            </label>
+
+            <label>
+                <div class="text-big">Link</div>
+                <input class="title_link" type="url" name="link" value="{{project.link}}">
+            </label>
+
+            <label>
+                <div class="text-big">Description</div>
+                <textarea class="box" name="description">{{project.description}}</textarea>
+            </label>
+
+            <label>
+                <p class="text-big">Programming Language (Optional)</p>
+                <select class="dropdown" name="programming_language">
+                    <option>Select One</option>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="jQuery">jQuery</option>
+                    <option value="Python">Python</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="PHP">PHP</option>
+                </select>
+            </label>
+
+            <label>
+                <p class="text-big">Category</p>
+                    <select class="dropdown" name="name_category">
+                        {% if project.category_name %}
+                        <option value="{{project.category_name}}">{{project.category_name}}</option>
+                        {% else %}
+                        <option>Select One</option>
+                        {% endif %}
+                        {% for category in categories %}
+                            <option value="{{category.name}}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                <p class="text-big">Add Category</p>
+                    <input class="title_link" type="text" name="add_category" value="{{add_category}}">
+            </label>
+
+            <br><br>
+            <p>Feature on Main Page?</p>
+            <input style="margin-right: 5px" type="radio" name="p_feature" value="true"><label style="margin-right: 10px">Yes</label>
+            <input style="margin-right: 5px" type="radio" name="p_feature" value="false"><label>No</label>
+
+            <br><br>
+            <p>* - Required to submit</p>
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

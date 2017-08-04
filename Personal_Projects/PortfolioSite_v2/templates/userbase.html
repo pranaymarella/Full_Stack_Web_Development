@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Marmalade Tech.</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+        <link href="/static/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/static/css/style.css" rel="stylesheet"/>
+        <link href="/static/css/dropzone.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="/static/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/static/slick/slick-theme.css"/>
+        <link rel="shortcut icon" type="image/svg" href="/static/images/favicon.ico">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/static/slick/slick.min.js"></script>
+        <script type="text/javascript" src="/static/js/carousel.js"></script>
+        <script type="text/javascript" src="/static/js/dropzone.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            {% if user_other %}
+                              Currently viewing, {{user_other.name}}
+                            {% elif user %}
+                              Welcome, {{user.name}}
+                            {% else %}
+                              <a class="login-link" href="/login">login</a>
+                              |
+                              <a class="login-link" href="/signup">signup</a>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li>
+                        <div id="search">
+                            <form action="/search">
+                                <div>
+                                    <input type="text" name="search_user" class="searchbar" placeholder="Search by Username">
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">+ Advanced Search</a>
+                    </li>
+                    {% if user and not user_other %}
+                    <li>
+                        <a href="/main">Home</a>
+                    </li>
+                    <li>
+                        <a href="/projects">Projects</a>
+                    </li>
+                    <li>
+                        <a href="/newsfeed">News Feed</a>
+                    </li>
+                    <li>
+                        <a href="/about_me">Profile</a>
+                    </li>
+                    <li>
+                        <a class="login-link" href="/logout">Log out</a>
+                    </li>
+                    {% elif user_other %}
+                    <li>
+                        <a href="/main">Go Back</a>
+                    </li>
+                    <li>
+                        <a href="/visit/{{user_other.name}}">{{user_other.name}}'s Homepage</a>
+                    </li>
+                    <li>
+                        <a href="/visit/projects/{{user_other.name}}">{{user_other.name}}'s Projects</a>
+                    </li>
+                    <li>
+                        <a href="/visit/profile/{{user_other.name}}">{{user_other.name}}'s Profile</a>
+                    </li>
+                    <li>
+                        <a class="login-link" href="/logout">Log out</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="login-link" href="/login">Login</a>
+                    </li>
+                    <li>
+                        <a class="login-link" href="/signup">Signup</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><img class="header-logo" src="/static/images/sidebar.svg" alt="no image"></a>
+                        <hr class="hr-small">
+                    </div>
+                <!-- </div>
+                <div class="container"> -->
+                    <div class="row">
+                        <div>
+                            <!--Contains the Title-->
+                                <header>
+                                    <div class="row">
+                                        <!-- <div class="col-md-6">
+                                            <img class="title-logo" src="/static/images/m4.svg" alt="logo">
+                                        </div> -->
+                                        <div class="col-md-12 text-center text-uppercase">
+                                            <!--Here is the Name and the Description-->
+                                            {% if user and not user_other %}
+                                            <h1 class="title-big text-thin">{{user.display}}</h1>
+                                            <h4 class="title-small">{{user.occupation}}</h4>
+                                            {% elif user_other %}
+                                                <h1 class="title-big text-thin">{{user_other.display}}</h1>
+                                                <h4 class="title-small">{{user_other.occupation}}</h4>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <hr class="hr-medium">
+                                </header>
+                                <!-- Everything above this portion acts as a base for all of the other
+                                content on this website -->
+                                {% block content %}
+                                {% endblock %}
+                                <div class="footer" style="height: 100px;">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Toggle Script -->
+        <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        </script>
+    </body>
+</html>

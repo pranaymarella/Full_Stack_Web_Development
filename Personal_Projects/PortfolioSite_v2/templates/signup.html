@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sign Up - Marmalade Tech.</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet"/>
+        <link href="/static/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/static/css/login.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/svg" href="/static/images/favicon.ico">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/login.js"></script>
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="form">
+                <div>
+                    <img class="logo center-block" src="/static/images/m5.svg" alt="no image">
+                </div>
+                <hr class="hr-small">
+                <form action="/signup" class="login-form" method="post" autocomplete="off">
+                    {% if error_username %}
+                        <p class="message" style="color: red;"><b>{{error_username}}</b></p>
+                    {% endif %}
+                    <input type="text" name="username" placeholder="Username"/>
+                    {% if error_email %}
+                        <p class="message" style="color: red;"><b>{{error_email}}</b></p>
+                    {% endif %}
+                    <input type="text" name="email" placeholder="Email (Optional)">
+                    <input type="text" name="display" placeholder="Display Name (Optional)">
+                    <input type="text" name="occupation" placeholder="Occupation (Optional)">
+                    {% if error_password %}
+                        <p class="message" style="color: red;"><b>{{error_password}}</b></p>
+                    {% endif %}
+                    <input type="password" name="password" placeholder="Password"/>
+                    {% if error_verify %}
+                        <p class="message" style="color: red;"><b>{{error_verify}}</b></p>
+                    {% endif %}
+                    <input type="password" name="verify" placeholder="Verify Password">
+                    <button>Register</button>
+                    <p class="message">Already Have an Account? <a href="/login">Log In</a></p>
+                    <p class="message">Forgot Password? <a href="#">Click Here</a></p>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

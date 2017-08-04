@@ -1,0 +1,163 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+<main>
+    <div class="row">
+        <div class="featured-title col-md-12">
+            <h2 class="featured-title-text">Summary</h2>
+            {% if user and not user_other %}
+            <div class="effects col-md-4" data-toggle="modal" data-target="#add_e">
+                    <!--Adding Projects-->
+                    <img class="center img-responsive" src="/static/images/add.svg" alt="Add" >
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="featured-title col-md-12">
+            <h2 class="featured-title-text">Experience</h2>
+            {% if user and not user_other %}
+            <div class="effects col-md-4" data-toggle="modal" data-target="#add_e">
+                    <!--Adding Projects-->
+                    <img class="center img-responsive" src="/static/images/add.svg" alt="Add" >
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="featured-title col-md-12">
+            <h2 class="featured-title-text">Education</h2>
+        </div>
+        {% for e in education %}
+        <span>
+            <div class="effects col-md-4 height" data-toggle="modal" data-target="#{{e.key.id()}}">
+                <div>
+                    <h2 class="featured-text text-uppercase text-center vert_align max" style="word-wrap: break-word">{{e.university}}</h2>
+                </div>
+                <hr class="split">
+                <p class="text-center align-middle"><b>Credential:</b></p>
+                <p class="text-center align-middle max">{{e.degree}}</p>
+                <p class="text-center align-middle"><b>Timeline:</b></p>
+                <p class="text-center align-middle max">{{e.year_start}} - {{e.year_graduate}}</p>
+            </div>
+        </span>
+        {% endfor %}
+        {% if user and not user_other %}
+        <div class="effects col-md-4" data-toggle="modal" data-target="#add_e">
+                <!--Adding Projects-->
+                <img class="center img-responsive" src="/static/images/add.svg" alt="Add">
+        </div>
+        {% endif %}
+    </div>
+</main>
+
+{% for e in education %}
+    <aside>
+        <!--This is the modal for Rendering Modals for each Education-->
+        <div class="modal fade" id="{{e.key.id()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="modal-title">
+                            <h2 class="max modal-about"><b>{{e.university}}</b></h2><br>
+                        </div>
+                        <div>
+                            <h4><b>Credential:</b></h4>
+                            <p class="text-big">{{e.degree}}</p>
+                        </div>
+                        <div>
+                            <h4><b>GPA:</b></h4>
+                            <p class="max text-big">{{e.gpa}}</p>
+                            <h6 class="text-big max"><b>Studied:</b></h6>
+                            <p class="text-big max">{{e.year_start}} - {{e.year_graduate}}</p>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        {% if user and not user_other %}
+                        <button type="button" class="btn-left btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#D{{e.key.id()}}">Delete</button>
+                        {% endif %}
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+{% if user and not user_other %}
+    <aside>
+        <!--This is the modal for Confirming Deleting Post-->
+        <div class="modal fade" id="D{{e.key.id()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="text-big text-center">Are you sure?</p>
+                        <div class="text-center">
+                            <form action='/DeleteEducation/{{e.key.id()}}' method="post">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+{% endif %}
+
+{% endfor %}
+
+{% if user and not user_other %}
+<!-- Modal for Adding Education -->
+<aside>
+    <div class="modal fade" id="add_e" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel1">Education</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-title">
+                        <form action="/UpdateEducation" method="post">
+                            <label>
+                                <div class="text-big">University</div>
+                                <input class="title_link" type="text" name="university" value="{{university}}">
+                            </label>
+
+                            <label>
+                                <div class="text-big">Credential</div>
+                                <input class="title_link" type="text" name="degree" value="{{degree}}">
+                            </label>
+
+                            <label>
+                                <div class="text-big">GPA</div>
+                                <input class="title_link" type="text" name="gpa" value="{{gpa}}">
+                            </label>
+
+                            <label>
+                                <div class="text-big">Year Started</div>
+                                <input class="title_link" type="text" name="year_start" value="{{year_start}}">
+                            </label>
+
+                            <label>
+                                <div class="text-big">Graduation Year</div>
+                                <input class="title_link" type="text" name="year_graduate" value="{{year_graduate}}">
+                            </label>
+
+                            <br><br>
+                            <input type="submit">
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+{% endif %}
+
+{% endblock %}

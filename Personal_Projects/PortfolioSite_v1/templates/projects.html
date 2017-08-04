@@ -1,0 +1,182 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+    <main>
+        <div class="row">
+            <div class="featured-title col-md-12">
+                <h2 class="featured-title-text">Projects</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h3>Filter: </h3>
+                <form action="/FilterProjects" method="post">
+                    <select class="dropdown" name="name_c">
+                        {% if category_filter %}
+                        <option value="{{category_filter.name}}">{{category_filter.name}}</option>
+                        {% endif %}
+                        <option value="all">All</option>
+                        {% for category in categories %}
+                            {% if category != category_filter %}
+                            <option value="{{category.name}}">{{category.name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="organize-elements row">
+            <article>
+                <div class="effects col-md-4" data-toggle="modal" data-target="#add">
+                    <!--Appify Image/Description-->
+                    <img class="center img-responsive" src="/static/images/add.svg" alt="Add" >
+                </div>
+            </article>
+            {% for project in projects %}
+                <span>
+                    <div class="effects col-md-4 height" data-toggle="modal" data-target="#{{project.key.id()}}">
+                        <div>
+                            <h2 class="featured-text text-uppercase text-center vert_align max">{{project.title}}</h2>
+                        </div>
+                        <hr class="split">
+                        <p class="text-center align-middle"><b>Description:</b></p>
+                        <p class="text-center align-middle max">{{project.description}}</p>
+                        <p class="text-center align-middle"><b>Link:</b></p>
+                        <p class="text-center align-middle max">{{project.link}}</p>
+                    </div>
+                </span>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!--This contains the reusable code for the modals-->
+    {% for project in projects %}
+        <aside>
+            <!--This is the modal for Rendering Modals for Each Project-->
+            <div class="modal fade" id="{{project.key.id()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="{{project.key.id()}}"></h4>
+                            <form action="/editproject/{{project.key.id()}}">
+                                <div style="display: inline-block;">
+                                    <input type="image" src="/static/images/edit.svg" height="30" width="30">
+                                    Edit
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-body">
+                            <div class="modal-title">
+                                <h2 class="max modal-about"><b>{{project.title}}</b></h2><br>
+                            </div>
+                            <div>
+                                <h4><b>Description:</b></h4>
+                                <p class="text-big">{{project.description}}</p>
+                            </div>
+                            <div>
+                                <h4><b>Link:</b></h4>
+                                {% if project.link == "[None]" %}
+                                    <p class="max text-big">{{project.link}}</p>
+                                {% else %}
+                                    <a href="{{project.link}}"><p class="max text-big">{{project.link}}</p></a>
+                                {% endif %}
+                                <h6 class="text-big max"><b>Upload Date:</b></h6>
+                                <p class="text-big max">{{project.created.strftime("%b %d, %Y")}}</p>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-left btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#D{{project.key.id()}}">Delete</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <aside>
+            <!--This is the modal for Confirming Deleting Post-->
+            <div class="modal fade" id="D{{project.key.id()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="D{{project.key.id()}}">Deleting {{project.title}}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-big text-center">Are you sure?</p>
+                            <div class="text-center">
+                                <form action='/Delete/{{project.key.id()}}' method="post">
+                                    <input type="submit" value="Yes">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    {% endfor %}
+
+    <aside>
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel1">Add Project</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-title">
+                            <h2 class="modal-about">Project Details</h2>
+                            <form action="/UPHandler" method="post">
+                                <label>
+                                    <div class="text-big">Title *</div>
+                                    <input class="title_link" type="text" name="title" value="{{title}}">
+                                </label>
+
+                                <label>
+                                    <div class="text-big">Link</div>
+                                    <input class="title_link" type="url" name="link" value="{{link}}">
+                                </label>
+
+                                <label>
+                                    <div class="text-big">Description *</div>
+                                    <textarea class="box" name="description">{{description}}</textarea>
+                                </label>
+                                <label>
+                                    <div class="text-big">Skill (Optional)</div>
+                                    <select class="dropdown" name="programming_language">
+                                        <option>Select One</option>
+                                        {% for skill in skills %}
+                                        <option value="{{skill.name}}">{{skill.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </label>
+                                <p class="text-big">Category</p>
+                                    <select class="dropdown" name="name_category">
+                                        <option>Select One</option>
+                                        {% for category in categories %}
+                                            <option value="{{category.name}}">{{category.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                <p class="text-big">Add Category</p>
+                                    <input class="title_link" type="text" name="add_category" value="{{add_category}}">
+                            </label>
+                            <br><br>
+                            <p>* - are required to submit</p>
+                            <div class="error">{{error}}</div>
+                            <input type="submit">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+{% endblock %}

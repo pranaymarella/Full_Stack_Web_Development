@@ -1,0 +1,498 @@
+/* Contains the CSS for elements */
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+img {
+	vertical-align: middle;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	color: #2d3c49;
+}
+
+textarea {
+    width: 400px;
+    height: 200px;
+    font-size: 17px;
+    font-family: monospace;
+}
+
+input[type=file] {
+    font-size: 15px;
+}
+
+p {
+    font-size: 1.25em;
+}
+
+/* Contains the CSS for the Base page */
+
+.centered {
+    margin-left: auto;
+    marign-right: auto;
+    margin-top: 100px;
+}
+
+.position {
+    margin-left: 10px;
+}
+
+.main-logo {
+    width: 288px;
+    height: 288px;
+}
+
+/* Contains the CSS for the Sidebar */
+
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ body {
+    overflow-x: hidden;
+ }
+
+/* CSS for the Login Page */
+.form-control {
+    display: inline-block;
+    width: aut
+}
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    font-size: 1.2em;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 55px;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+/*Contains the CSS for the header */
+
+.hr-small {
+	width: 100%;
+	height: 1px;
+	background-color: #7d97ad;
+}
+
+.hr-medium {
+    width: 100%;
+    height: 2.5px;
+    background-color: #7d97ad;
+}
+
+
+.input-button {
+    width: 25px;
+    height: 25px;
+}
+
+.icon_position {
+    margin-top: 15px;
+}
+
+.header_position {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.header-logo {
+    margin: 0px auto 0px auto;
+    height: 45px;
+}
+
+.logo {
+    margin: 10px auto -10px auto;
+    height: 45px;
+}
+
+.searchbar {
+    border-style: solid;
+    border-color: #4B7B9F;
+    border-width: 1px;
+    width: 85%;
+    height: 30px;
+    padding-left: 3px;
+}
+
+@media (max-width: 992px) {
+    .poof {
+        display: none;
+    }
+}
+
+/* Contains the CSS for the Title */
+.title-logo {
+	width: 100px;
+	height: 100px;
+	margin: 20px 0 0 20px;
+}
+
+.text-align {
+	text-align: right;
+}
+
+.title-big {
+	font-size: 4em;
+}
+
+.title-small {
+	font-size: 2em;
+	font-weight: 700;
+}
+
+/* Contains the CSS for the Nav*/
+
+#navigation {
+	border-style: solid;
+	border-width: 1.5px 0 2.5px 0;
+	margin: 10px 0 10px 0;
+	padding: 0px;
+}
+
+.nav-col {
+	margin: -15px 0 0 0;
+}
+
+.nav-text {
+	text-align: center;
+	line-height: 35px;
+}
+
+.nav-text:hover {
+	font-weight: 700;
+	color: #02b3e4;
+    cursor: pointer;
+}
+
+/* Contains the CSS for Title Image --> Biggest Image on Screen */
+.title-image {
+	width: 100%;
+	max-height: 500px;
+}
+
+/* Contains the CSS for the Carousel */
+.carousel-center {
+    display: block;
+    margin: 50px auto 50px auto;
+}
+
+.cfont {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.skills {
+    height: 75px;
+    margin: 20px auto 0px auto;
+}
+
+/* Contains the CSS for the Featured Work Title */
+
+.featured-title {
+	margin: 0 0 5px 0;
+}
+
+.featured-title-text {
+	color: #7d97ad;
+	font-size: 40px;
+	font-weight: 700;
+}
+
+@media (max-width: 992px) {
+    .featured-title-text {
+        margin-left: 5px;
+    }
+}
+
+
+/* Contains the CSS for the Categories */
+
+.category_effects:hover {
+    font-weight: bold;
+    color: #02b3e4;
+    cursor: pointer;
+}
+
+/* Contains the CSS for the Projects */
+
+.img_center {
+    margin: 0 auto;
+}
+
+.split {
+    border: none;
+    height: 1px;
+    background-color: #333
+}
+
+.vert_align {
+    margin-top: 50px;
+}
+
+.featured-text {
+	font-weight: 700;
+	font-size: 40px;
+}
+
+.max {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.max-lines {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1.8em;
+}
+
+.effects:hover {
+	background-color: #66b3ff;
+	color: #fff;
+    cursor: pointer;
+}
+
+.height {
+    height: 300px;
+}
+/* Contains the CSS for the Modal*/
+
+.edit {
+    height= 30px;
+    width= 30px;
+}
+
+.modal-about {
+	border-style: solid;
+	border-width: 0 0 1px 0;
+}
+
+.btn-left {
+    float: left;
+}
+
+.button {
+    width: 42px;
+    height: 31px;
+}
+
+/* Adding new Projects */
+.center {
+    display: block;
+    margin: 100px auto 100px auto;
+}
+
+.text-big {
+    font-size: 1.5em;
+}
+
+.text-huge {
+    font-size: 5em;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+}
+
+.title_link {
+    width: 250px;
+    font-size: 20px;
+    padding: 2px;
+}
+
+.box {
+    width: 450px;
+    max-width: 100%;
+    height: 250px;
+}
+
+.dropdown {
+    width: 250px;
+    font-size: 15px;
+    padding: 2px;
+}
+
+.add_category {
+    margin-top: 0;
+}
+
+/* CSS for Status Page (News Feed) */
+
+@media (min-width: 950px) {
+    .box_status {
+        width: 600px;
+        max-width: 600px;
+        height: 150px;
+        max-height: 200px;
+    }
+}
+@media (max-width: 949px) {
+    .box_status {
+        width: 90%;
+        max-width: 90%;
+        height: 150px;
+        max-height: 200px;
+    }
+}
+
+.status {
+    padding: 20px;
+    border: 1.5px solid;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.status + .status {
+    margin-top: 15px;
+}
+
+.status-heading {
+    position: relative;
+    border-bottom: 3px solid #666;
+}
+
+.status-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.status-date {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    color: #999;
+
+}
+
+.status-content {
+    word-wrap: break-word;
+    margin-top: 5px;
+    font-size: 1.5em;
+}
+
+/* CSS for the Error Page */
+
+.error-big {
+    color: red;
+    font-size: 40px;
+}
