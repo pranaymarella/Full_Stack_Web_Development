@@ -1,0 +1,17 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+    <div>
+        <p>Are you sure you want to delete this comment?</p>
+        <div style="float:left; margin-right: 10px;">
+            <form method="Post">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <div style="float:left;">
+            <a style="text-decoration: none;" href="/blog/{{comment.post.key().id()}}">
+                <button>Cancel</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

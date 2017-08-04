@@ -1,0 +1,16 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Multi User Blog</h1>
+    </div>
+    <div class="text-center position">
+        <a class="effects" href="/blog/newpost">+ Add Post</a>
+    </div>
+
+    <div>
+        {% for p in posts %}
+            {{ p.render() | safe }}
+        {% endfor %}
+    </div>
+{% endblock %}

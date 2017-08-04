@@ -1,0 +1,15 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+    <label class="title"><h2><b>Edit Comment</b></h2></label>
+    <hr class="hr-medium">
+    <form action="/blog/editcomment/{{comment.key().id()}}" method="post">
+        <div class="text-big position">Comment</div>
+        <textarea class="txtarea" name="comment">{{comment.comment}}</textarea>
+
+        <div class="error">{{error}}</div>
+
+        <input type="submit" class="btn-position" name="update" value="Update">
+        <input type="submit" class="btn-position" name="cancel" value="cancel">
+    </form>
+{% endblock %}

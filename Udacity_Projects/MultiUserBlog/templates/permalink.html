@@ -1,0 +1,72 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+        <a class="text-center" href="/blog"><button>Main Page</button></a>
+    </div>
+    <div>
+        <h3 style="font-size: 25px;"><b>{{post.subject}}</b></h3>
+        <h6 style="font-size: 12px;">{{post.created.strftime("%b %d, %Y")}}</h6>
+    </div>
+    <hr class="hr-small">
+    <div class="post-content">
+        {{post.content | safe}}
+    </div>
+    <hr class="hr-small">
+        <div class="row">
+            <div class="col-md-1">
+                <p>Likes: {{post.likes}}</p>
+            </div>
+        </div>
+
+    {% if user_name == post.user.name %}
+    <div class="row">
+        <div class="col-md-3">
+            <button class="btn-position">
+                <a href="/blog/EditPost/{{post.key().id()}}">Edit</a>
+            </button>
+
+            <button class="btn-position">
+                <a href="/blog/DeletePost/{{post.key().id()}}">Delete</a>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="text-center">
+            <h3>Comments</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <form action="/comment/{{post.key().id()}}" method="post">
+                <textarea class="txtcomment" placeholder="Insert Comment Here" name="comment"></textarea>
+                <br>
+                <input class="position" type="submit">
+            </form>
+        </div>
+    </div>
+
+    {% for c in comments %}
+    <div class="row">
+        <div class="col-md-5 center-block comment">
+            <h4>{{c.user.name}}:</h4>
+            <hr class="hr-small">
+            <div>{{c.comment}}</div>
+            <hr class="hr-small">
+            {% if c.user.name == user_name %}
+            <div class="row" style="margin: 10px 0 10px 0">
+                    <button><form action="/blog/editcomment/{{c.key().id()}}">
+                        <input type="submit" value="Edit">
+                    </form></button>
+
+                    <button><form action="/blog/deletecomment/{{c.key().id()}}">
+                        <input type="submit" value="Delete">
+                    </form></button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

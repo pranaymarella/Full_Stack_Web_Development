@@ -1,0 +1,216 @@
+/* General CSS */
+a:hover, a:visited, a:link, a:active {
+    color: #333;
+    text-decoration: none;
+}
+
+img {
+	vertical-align: middle;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	color: #2d3c49;
+}
+
+/*textarea {
+    width: 400px;
+    height: 200px;
+    font-size: 17px;
+    font-family: monospace;
+}*/
+
+input[type=file] {
+    font-size: 15px;
+}
+
+p {
+    font-size: 1.25em;
+}
+
+label {
+    margin: 10px 0 10px 0;
+}
+
+label + label {
+    margin-bottom: 10px;
+}
+
+button + button {
+    margin-right: 10px;
+}
+
+.center {
+    display: block;
+    margin: 100px auto 100px auto;
+}
+
+.centered {
+    margin-left: auto;
+    marign-right: auto;
+    margin-top: 250px;
+}
+
+.text-big {
+    font-size: 1.5em;
+}
+
+.text-huge {
+    font-size: 5em;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+}
+
+.hr-small {
+	width: 100%;
+	height: 1px;
+	background-color: #7d97ad;
+}
+
+.hr-medium {
+    width: 100%;
+    height: 2.5px;
+    background-color: #7d97ad;
+}
+
+.effects:hover {
+    color: blue;
+}
+
+.txtarea {
+    width: 400px;
+    max-width: 100%;
+    height: 200px;
+    font-size: 17px;
+    font-family: monospace;
+}
+
+.txtcomment {
+    width: 400px;
+    max-width: 100%;
+    height: 75px;
+    font-size: 17px;
+    font-family: monospace;
+}
+
+.hide {
+    width: 45px;
+    height: 45px;
+}
+
+/* CSS for Base Page */
+
+.main-logo {
+    width: 288px;
+    height: 288px;
+}
+
+.login-link {
+    color: #02b3e4;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    color: blue;
+}
+
+/* CSS for Login Page */
+
+.info {
+    width: 150px;
+    height: 20px;
+    font-size: 1.2em;
+}
+
+.label {
+    font-size: 1.25em;
+}
+
+/* CSS for the Header */
+
+.header-logo {
+    margin: 0px auto 0px auto;
+    height: 45px;
+}
+
+.header_position {
+    margin-top: 10px;
+}
+
+/* CSS for Main Page */
+
+.error {
+    color: red;
+}
+
+.main-title {
+    display: block;
+    color: #222;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+.post {
+    padding: 20px;
+    border: 1.5px solid;
+}
+
+.post + .post {
+    margin-top: 15px;
+}
+
+.post-heading {
+    position: relative;
+    border-bottom: 3px solid #666;
+}
+
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.post-date {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    color: #999;
+
+}
+
+.post-content {
+    word-wrap: break-word;
+    margin-top: 5px;
+    font-size: 1.5em;
+}
+
+/* CSS for New Post Page */
+
+.position {
+    margin: 10px 0 10px 0;
+}
+
+/* CSS for the Permalink Page */
+
+.btn-position {
+    float: left;
+    margin: 15px 10px 15px 0;
+}
+
+/* CSS for Comments */
+
+.comment {
+    border: 1px solid;
+    margin-bottom: 10px;
+}
+
+/* CSS for Footer of Page */
+
+.footer {
+    height: 50px;
+}

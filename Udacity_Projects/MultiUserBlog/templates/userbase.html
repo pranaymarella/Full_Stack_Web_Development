@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Multi User Blog</title>
+        <link href="/static/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/static/css/main.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/svg" href="/static/images/favicon.ico">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="col-md-6 col-sm-6 col-xs-6 text-left header-position">
+                <a href="/blog"><img class="header-logo" src="/static/images/m4.svg" alt="no image"></a>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 text-right text-big header_position">
+                {% if user.display %}
+                    Welcome, {{user.display}} | <a class="login-link" href="/logout">logout</a></p>
+                {% elif user %}
+                    Welcome, {{user.name}} | <a class="login-link" href="/logout">logout</a></p>
+                {% else %}
+                    <a class="login-link" href="/login">Login</a>
+                    |
+                    <a class="login-link" href="/signup">Signup</a>
+                {% endif %}
+            </div>
+            <hr class="hr-small">
+        </div>
+        <div class="container">
+            <div class="row">
+                {% block content%}
+                {% endblock %}
+            </div>
+            <div class="footer">
+            </div>
+        </div>
+    </body>
+</html>

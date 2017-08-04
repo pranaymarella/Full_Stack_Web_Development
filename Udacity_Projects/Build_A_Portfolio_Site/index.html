@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>My Portfolio</title>
+		<link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet">
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<!--Using Bootstrap Framework, Everything must be in container -->
+		<div class="container">
+			<!--Contains the Title -->
+			<header>
+				<div class="row">
+					<div class="col-md-6">
+						<!--Here is the Udacity Logo-->
+						<img class="title-logo" src="images/udacity_logo.svg" alt="logo">
+					</div>
+					<div class="col-md-6 text-right text-uppercase">
+						<!--Here is the Name and the Description-->
+						<h1 class="title-big text-thin">Pranay Marella</h1>
+						<h4 class="title-small">FRONT-END NINJA</h4>
+					</div>
+				</div>
+			</header>
+
+			<!--This is the Element that acts as a navigation from this page to other pages -->
+			<nav>
+				<div id="navigation" class="row">
+					<div class="nav-col col-md-4">
+						<h3 class="nav-text">Projects</h3>
+					</div>
+					<div class="nav-col col-md-4">
+						<h3 class="nav-text">About Me</h3>
+					</div>
+					<div class="nav-col col-md-4">
+						<h3 class="nav-text">Contact</h3>
+					</div>
+				</div>
+			</nav>
+
+			<!--Contains the Title Image, the biggest image on the page -->
+			<aside>
+				<div class="row">
+					<div class="col-md-12">
+						<img class="img-responsive title-image" src="images/html.jpg" alt="html image">
+					</div>
+				</div>
+			</aside>
+
+			<!--Contains the Featured Work Title Text-->
+			<main>
+				<div class="row">
+					<div class="featured-title col-md-12">
+						<h2 class="featured-title-text">Featured Work</h2>
+					</div>
+				</div>
+			<!--Contains the Featured Work Images/Description-->
+				<div class="organize-elements row">
+					<article>
+						<div class="effects appify col-md-4">
+							<!--Appify Image/Description-->
+							<img class="img-responsive" src="http://placekitten.com/750/500" alt="Appify" data-toggle="modal" data-target="#project1">
+							<h2 class="effects featured-text text-uppercase text-center">appify</h2>
+							<p class="effects text-center">https://github.com/udacity/Appify/</p>
+						</div>
+					</article>
+					<article>
+						<div class="effects sunflower col-md-4">
+							<!--Suflower Image/Description-->
+							<img class="img-responsive" src="http://placebear.com/750/500" alt="Sunflower" data-toggle="modal" data-target="#project2">
+							<h2 class="featured-text text-uppercase text-center">sunflower</h2>
+							<p class="text-center">https://github.com/udacity/Sunflower</p>
+						</div>
+					</article>
+					<article>
+						<div class="effects bokeh col-md-4">
+							<!--Bokeh Image/Description-->
+							<img class="img-responsive" src="http://loremflickr.com/750/500/dog" alt="Bokeh" data-toggle="modal" data-target="#project3">
+							<h2 class="featured-text text-uppercase text-center">Bokeh</h2>
+							<p class="text-center">http://github.com/udacity/Bokeh</p>
+						</div>
+					</article>
+				</div>
+			</main>
+		</div>
+
+		<!--This contains the resuable code for the modals-->
+		<aside>
+			<!--This is the modal for Appify-->
+			<div class="modal fade" id="project1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel1">Appify</h4>
+						</div>
+						<div class="modal-body">
+							<img class="img-responsive" src="http://placekitten.com/750/500" alt="appify">
+							<div class="modal-title">
+								<h2 class="modal-about">About</h2>
+							</div>
+							<p>This was my first time creating a modal. I learned a lot about how to structure HTML and CSS.<p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--This is the modal for Sunflower-->
+			<div class="modal fade" id="project2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel2">Sunflower</h4>
+						</div>
+						<div class="modal-body">
+							<img class="img-responsive" src="http://placebear.com/750/500" alt="sunflower">
+							<div class="modal-title">
+								<h2 class="modal-about">About</h2>
+							</div>
+							<p>This was my first time creating a modal. I learned a lot about how to structure HTML and CSS.<p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--This is the modal for Bokeh-->
+			<div class="modal fade" id="project3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="myModalLabel3">Bokeh</h4>
+						</div>
+						<div class="modal-body">
+							<img class="img-responsive" src="http://loremflickr.com/750/500/dog" alt="bokeh">
+							<div class="modal-title">
+								<h2 class="modal-about">About</h2>
+							</div>
+							<p>This was my first time creating a modal. I learned a lot about how to structure HTML and CSS.<p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "userbase.html" %}
+
+{% block content %}
+    <label class="title"><h2><b>Edit Post</b></h2></label>
+    <hr class="hr-medium">
+    <form method="post">
+        <div class="text-big position">Subject</div>
+            <input type="text" name="subject" value="{{post.subject}}">
+
+        <div class="text-big position">Blog</div>
+        <textarea class="txtarea" name="content">{{post.content}}</textarea>
+
+        <div class="error">{{error}}</div>
+
+        <input type="submit" class="btn-position" name="update" value="Update">
+        <input type="submit" class="btn-position" name="cancel" value="cancel">
+    </form>
+{% endblock %}
