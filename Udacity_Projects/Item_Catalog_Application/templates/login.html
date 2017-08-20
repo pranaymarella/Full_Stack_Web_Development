@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Marmalade Tech.</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300" rel="stylesheet"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/static/css/login.css" rel="stylesheet"/>
+        <link href="/static/css/style.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/svg" href="/static/images/favicon.ico">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    </head>
+
+    <body>
+        <div class="login-page">
+            <div class="form">
+                <form action="/simplelogin" class="login-form" method="post" autocomplete="off">
+                    {% if error %}
+                        <p class="message" style="color: red;"><b>{{error}}</b></p>
+                    {% endif %}
+                    <input autocomplete="off" type="text" name="username" placeholder="username"/>
+                    <input type="password" name="password" placeholder="password"/>
+                    <button>login</button>
+                    <p class="message">Not registered? <a href="{{url_for('signup')}}">Create an account</a></p>
+                    <p class="message">Forgot Password? <a href="#">Click Here</a></p>
+                </form>
+                <hr class="hr-small">
+                <!-- data scope parameterer specifies what google resources we want to access -->
+                <!-- data approval promt = force makes user log in every time they visit login page aka doesnt check to see if theyre already logged in, turn this off in production code -->
+                <div id="signinButton">
+                    <span class="g-signin"
+                        data-scope="openid email"
+                        data-clientid="655652539526-t31sb26innsbn7lsdb8aodc28d0gd2m5.apps.googleusercontent.com"
+                        data-redirecturi="postmessage"
+                        data-accesstype="offline"
+                        data-cookiepolicy="single_host_origin"
+                        data-callback="signInCallback"
+                        data-approvalprompt="force">
+                    </span>
+                </div>
+
+                <div id="result"></div>
+            </div>
+        </div>
+
+
+
+        <script>
+            // sign-in call back function that takes in authresult as input
+            function signInCallback(authResult) {
+                // if authResult contains a parameter called code then we know that the authorization with google API server was successful
+                // this means our one time use code is present
+                if (authResult['code']) {
+                    // Hide the sign-in button now that the user is authorized
+                    $('#signinButton').attr('style', 'display:none');
+                    $('.login-form').attr('style', 'display:none');
+                    // send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+                    // use jquery to create AJAX call that passes the one time code Google gave the client onto the server
+                    $.ajax({
+                        type: 'POST',
+                        url: '/gconnect?state={{STATE}}',
+                        processData: false,
+                        contentType: 'application/octet-stream; charset=utf-8',
+                        data: authResult['code'],
+                        success: function(result) {
+                            if (result) {
+                                $('#result').html('Login Successful!</br>' + result + '</br>Redirecting...')
+                                setTimeout(function() {
+                                    window.location.href="/";
+                                }, 4000);
+                            } else if (authResult['error']) {
+                                console.log('There was an error: ' + authResult['error']);
+                            } else {
+                                $('#result').html('Failed to make a server-side call. Check you configuration and console.');
+                            }
+                        }
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>

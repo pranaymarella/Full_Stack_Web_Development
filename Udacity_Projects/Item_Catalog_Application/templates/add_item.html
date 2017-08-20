@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <form action="{{url_for('add_item')}}" method="POST">
+            <input type="text" name="item_name" placeholder="Item Name" />
+            <input type="text" name="price" placeholder="Item price"/>
+            <input type="text" name="description" placeholder="Description"/>
+            {% if categories %}
+            <select name="category">
+                <option value="">Select One</option>
+                {% for category in categories %}
+                <option value="{{category.name}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+            {% endif %}
+            <input type="text" name="new_category" placeholder="New Category"/>
+            <input type="submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

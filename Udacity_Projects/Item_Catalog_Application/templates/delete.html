@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="text-center">
+        <form action="{{url_for('delete_item', catalog_name=item.category.name, item_name=item.name)}}" method="POST">
+            <p>Are you sure you want to delete {{item_name}}?</p>
+            <input type="submit" value="Delete Item"/>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- holds the content of item that we passed in -->
+<div class="row content">
+    {% if item %}
+    <div class="col-md-12"><h4>{{item.name}}</h4></div>
+    <div class="col-md-12"><p>Description: {{item.description}}</p></div>
+    <div class="col-md-12"><p>Price: {{item.price}}</p></div>
+    {% if login_session['username'] == item.author.username %}
+    <div class="col-md-12"><a href="{{url_for('edit_item', catalog_name=item.category.name, item_name=item.name)}}">Edit Item</a> | <a href="{{url_for('delete_item', catalog_name=item.category.name, item_name=item.name)}}">Delete Item</a></div>
+    {% endif %}
+    {% endif %}
+</div>
+
+{% endblock %}

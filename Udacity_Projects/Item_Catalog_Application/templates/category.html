@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- holds the content of categories and category items -->
+<div class="row content">
+    <div class="col-md-6">
+        <h4>Categories</h4>
+        {% if categories %}
+        <ul>
+        {% for category in categories %}
+            <li><a href="{{url_for('show_catalog', catalog_name=category.name)}}">{{category.name}}</a></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <h4>{{catalog_name}} Items ({{catalog_items|length}} items)</h4>
+        {% if catalog_items %}
+        <ul>
+            {% for item in catalog_items %}
+            <li><a href="{{url_for('show_item', catalog_name=catalog_name, item_name=item.name, item_id = item.id)}}">{{item.name}}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

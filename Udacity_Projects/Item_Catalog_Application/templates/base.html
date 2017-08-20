@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Item Catalog Application</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header at the top of the page -->
+            <div class="row header">
+                <div class="col-md-12">
+                    <h2><a href="{{url_for('index')}}">Catalog App</a></h2>
+                </div>
+                {% if login_session['username'] and login_session['gplus_id'] %}
+                <div class="col-md-12" style="margin: -5px 0px 0px 3px;">
+                    <h5><a href="{{url_for('gdisconnect')}}">Log out</a></h5>
+                </div>
+                {% elif login_session['username'] %}
+                <div class="col-md-12" style="margin: -5px 0px 0px 3px;">
+                    <h5><a href="{{url_for('logout')}}">Log out</a></h5>
+                </div>
+                {% else %}
+                <div class="col-md-12" style="margin: -5px 0px 0px 3px;">
+                    <h5><a href="{{url_for('showLogin')}}">Log In</a> | <a href="{{url_for('signup')}}">Sign Up</a></h5>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Flash Messages -->
+            <div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li><strong> {{ message }} </strong></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            {% if login_session['user_id'] %}
+            <div class="row" style="margin: -5px 0px 0px 3px;">
+                <p><a href="{{url_for('add_item')}}">Add Item</a></p>
+            </div>
+            {% endif %}
+            <!-- Other Content -->
+            {% block content %}
+            {% endblock %}
+
+        </div>
+    </body>
+</html>

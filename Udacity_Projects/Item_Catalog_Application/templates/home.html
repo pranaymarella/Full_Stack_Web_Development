@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- holds the content of categories and latest items -->
+<div class="row content">
+    <div class="col-md-6">
+        <h4>Categories</h4>
+        {% if categories %}
+        <ul>
+        {% for category in categories %}
+            <li><a href="{{url_for('show_catalog', catalog_name=category.name)}}">{{category.name}}</a></li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <h4>Latest Items</h4>
+        {% if latest_items %}
+        <ul>
+            {% for item in latest_items %}
+            <li><a href="{{url_for('show_item', catalog_name=item.category.name, item_name=item.name, item_id = item.id)}}">{{item.name}} ({{item.category.name}})</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

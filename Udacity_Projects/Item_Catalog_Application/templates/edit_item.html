@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    {% if error %}
+    <div>
+        <p>{{error}}</p>
+    </div>
+    {% endif %}
+    {% if item %}
+    <div class="col-md-12">
+        <form action="{{url_for('edit_item', catalog_name=category.name, item_name=item.name)}}" method="POST">
+            <input type="text" name="item_name" placeholder="Item Name" value="{{item.name}}"/>
+            <input type="text" name="price" placeholder="Item price" value="{{item.price}}"/>
+            <input type="text" name="description" placeholder="Description" value="{{item.description}}"/>
+            {% if categories %}
+            <select name="category">
+                <option value="{{category.name}}">{{category.name}}</option>
+                <option>----------</option>
+                {% for category in categories %}
+                <option value="{{category.name}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+            {% endif %}
+            <input type="text" name="new_category" placeholder="New Category"/>
+            <input type="submit">
+        </form>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
